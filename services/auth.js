@@ -12,10 +12,10 @@ const auth = async (req, res, next) => {
             next()
         }
         else (
-            res.json({ response: false, status: res.statusCode, error: "Invalid User" })
+            res.status(400).json({ response: false, error: "Invalid User" })
         )
     } catch (err) {
-        res.json({ response: false, status: res.statusCode, error: "Invalid authorization" })
+        res.status(400).json({ response: false, error: "Invalid authorization" })
     }
 }
 

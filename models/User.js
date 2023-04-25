@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         enum: ["admin", "customer"],
-        required: true
+        default: "customer"
     },
     address: {
         type: String,
@@ -25,6 +25,12 @@ const userSchema = new mongoose.Schema({
     },
     dob: {
         type: Date,
+        required: true
+    },
+    number: {
+        type: Number,
+        min: 10,
+        max: 10,
         required: true
     }
 })

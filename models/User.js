@@ -29,8 +29,8 @@ const userSchema = new mongoose.Schema({
     },
     number: {
         type: Number,
-        min: 10,
-        max: 10,
+        minLength:10,
+        maxLength: 10,
         required: true
     }
 })

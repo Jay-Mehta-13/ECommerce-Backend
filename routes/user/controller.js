@@ -1,5 +1,8 @@
-import User from "../../models/User.js";
 import md5 from "md5";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+import User from "../../models/User.js";
+dotenv.config()
 
 const showUser = async (req, res) => {
     try {
@@ -22,7 +25,7 @@ const showUserById = async (req, res) => {
 const addUser = async (req, res) => {
     try {
         const user = await User.create({ ...req.body, password: md5(req.body.password) })
-        res.status(200).json({ response: true, user: user })
+        res.status(200).json({ response: true, user: user, token: jwt.sign({ user: user }, process.env.JWT_SECRETKEY, { expiresIn: "2h" }) })
     } catch (err) {
         res.status(500).json({ response: false, error: err.message })
     }

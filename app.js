@@ -15,6 +15,8 @@ var app = express()
 
 connectMongo()
 
+app.use(cors())
+
 app.use(express.static(path.join(__dirname, "public")))
 
 app.use(express.urlencoded({ extended: true })) 
@@ -23,13 +25,12 @@ app.use(logger('dev'))
 
 app.use(express.json())
 
-// app.use(cors())
-var corsOptions = {
-    origin: ["http://www.example.com/","http://localhost:5173"],
-    optionsSuccessStatus: 200 // For legacy browser support
-    }
+// var corsOptions = {
+//     origin: ["http://www.example.com/","http://localhost:5173"],
+//     optionsSuccessStatus: 200 // For legacy browser support
+//     }
     
-    app.use(cors(corsOptions));
+//     app.use(cors(corsOptions));
 
 app.use("/", indexRouter)
 

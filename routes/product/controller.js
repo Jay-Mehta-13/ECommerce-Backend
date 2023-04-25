@@ -1,5 +1,4 @@
-import Product from "../../models/Product";
-import md5 from "md5";
+import Product from "../../models/Product.js";
 
 const showProduct = async (req, res) => {
     try {

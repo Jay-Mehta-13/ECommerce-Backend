@@ -6,7 +6,7 @@ dotenv.config()
 
 const auth = async (req, res, next) => {
     try {
-        const decodedUser = jwt.verify(req.headers.authorization, process.env.JWT_SECRETKEY)
+        const decodedUser = jwt.verify(req.headers.authorization.split(" ")[1], process.env.JWT_SECRETKEY)
         const validUser = await User.findById(decodedUser.user._id)
         if (validUser) {
             next()
